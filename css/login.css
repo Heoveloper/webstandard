@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+* {
+    font-family: 맑은고딕;
+    font-weight: bold;
+}
+ 
+.wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 500px;
+    height: 100vh;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+ 
+.login_form {
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    justify-content: center;
+    align-items: center;
+    /* margin: 0px, 20px, 40px, 20px; */
+    /* margin-top: 0px;
+    margin-bottom: 40px; */
+}
+ 
+input {
+    margin-bottom: 14px;
+    width: 290px;
+    height: 30px;
+    font-size: 16px;
+    border: black;
+    border-radius: 10px;
+}
+ 
+button {
+    width: 294px;
+    height: 50px;
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #f1c40f;
+    border: none;
+    border-radius: 10px;
+}

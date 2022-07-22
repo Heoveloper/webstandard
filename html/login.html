@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <!-- .container>.form>h1.login{로그인} -->
+
+    <div class="wrap">
+        <form class="login_form">
+            <h1 class="login">로그인</h1>
+            <div class="userid"><label>아이디 </label>
+                <input id="id" type="text" placeholder="아이디를 입력하세요">
+                <div id="nameError" class="error"></div>
+            </div>
+            <div class="password"><label>패스워드 </label>
+                <input id="pw" type="text" placeholder="비밀번호를 입력하세요">
+                <div id="pwError" class="error"></div>
+            </div><br>
+            <button id="btn">로그인</button>
+        </form>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

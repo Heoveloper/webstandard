@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/main/reset.css">
+    <style>
+        * {outline: 1px solid red;}
+        body {
+            margin: 0;
+            background-color: #eee;
+        }
+
+        #wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #wrapper > .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        #wrapper > .container > .content {
+            width: 80%;
+        }
+
+        /*uppermost*/
+        #wrapper > #uppermost > .content {
+            width: 100%;
+            height: 50px;
+            background-color: #bc477b;
+        }
+
+        /*header*/
+        #wrapper > #header > .content {
+            width: 100vw;
+            height: 150px;
+            background-color: #b47cff;
+        }
+
+        /*nav*/
+        #wrapper > #nav > .content {
+            height: 50px;
+            background-color: #7c4dff;
+        }
+
+        #wrapper > #main {
+            background-color: #76d275;
+        }
+
+        /*main*/
+        #wrapper > #main > .content {
+            display: flex;
+            justify-content: center;
+            border: 5px solid #000;
+            box-sizing: border-box;
+        }
+
+        #wrapper > #main > .content > .content__contents {
+            flex: 3;
+            background-color: #bc5100;
+        }
+
+        #wrapper > #main > .content > .content__side-banner {
+            flex: 1;
+            background-color: #f57f17;
+        }
+
+        #wrapper > #main > .content > .content__side-menu {
+            /* flex: 1; */ /* flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+            min-width: 100px;
+            background-color: #ffb04c
+        }
+
+        /*footerMenu*/
+        #wrapper > #footerMenu > .content {
+            width: 100vw;
+            height: 50px;
+            background-color: #34515e;
+        }
+
+        /*footer*/
+        #wrapper > #footer > .content {
+            width: 100vw;
+            height: 150px;
+            background-color: #8eacbb;
+        }
+
+        /*add*/
+        #add {
+            position: fixed;
+            top: 200px;
+            right: 20px;
+            width: 80px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="uppermost" class="container">
+            <div class="content">uppermost</div>
+        </div>
+        <header id="header" class="container">
+            <div class="content">header</div>
+        </header>
+        <nav id="nav" class="container">
+            <div class="content">nav</div>
+        </nav>
+        <main id="main" class="container">
+            <section class="content">
+                <article class="content__contents">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem aut amet tenetur placeat. Assumenda iusto quod minima libero perferendis dolor velit beatae laudantium at ab, quae eos, suscipit explicabo similique!</p>
+                </article>
+                <aside class="content__side-banner">sideBanner</aside>
+                <aside class="content__side-menu">sideMenu</aside>
+            </section>
+        </main>
+        <div id="footerMenu" class="container">
+            <div class="content">footerMenu</div>
+        </div>
+        <footer id="footer" class="container">
+            <div class="content">footer</div>
+        </footer>
+        <div id="add">
+            <ul>
+                <li>광고1</li>
+                <li>광고2</li>
+                <li>광고3</li>
+                <li>광고4</li>
+                <li>광고5</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

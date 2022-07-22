@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+* {
+  outline: 1px solid red;
+}
+
+/* header 영역 */
+header {
+  display: flex;
+  height: 100px;
+}
+header .logo {
+  flex: 1;
+}
+header .menu {
+  flex: 4;
+}
+header .menu .menu-top {
+  height: 40px;
+}
+header .menu .gnb {
+  height: 60px;
+}
+
+/* main 영역 */
+#container {
+  display: flex;
+}
+#container #sectionLeft {
+  flex: 2;
+}
+#container #sectionRight {
+  flex: 1;
+}
+
+/* footer 영역 */
+footer {
+  height: 100px;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GREAT 로그인 화면</title>
+    <style>
+        .greatLogo {
+            display: flex;
+            margin: auto;
+            width: 200px;
+            height: 60px;
+        }
+
+        header {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrap {
+            display: flex;
+            width: 100%;
+            height: 500px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loginBox{
+            text-align: center;
+            outline: auto;
+            padding: 50px;
+            border: none;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        #login {
+            font-size: 40px;
+            font-style: italic;
+            color: black;
+        }
+
+        #id {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #pw {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .loginBtn {
+            width: 290px;
+            height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #f1c40f;
+        }
+        .snsLoginBtn {
+            margin: auto;
+            width: 230px;
+            height: 40px;
+            /* border: none;
+            background-color: white; */
+        }
+        .snsLoginBtn > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            display: inline;
+            font-size: 30px;
+            font-style: italic;
+        }
+        #eat {
+            color: #f1c40f;
+        }
+        .infosearch {
+            font-size: 12px;
+            float: right;
+        }
+        #kakaoImage {
+            width: 290px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img class="greatLogo" src="/img/giwonLogo.jpg" alt="">
+    </header>
+    <div class="wrap">
+        <div class="loginBox">
+            <form action="">
+                <div class="great">
+                    <h2 id="gr">GR</h1><h2 id="eat">EAT</h1>
+                </div>
+                <h1 id="login">로그인</h1>
+                <p><label id="id">아이디 </label><input type="text" placeholder="아이디 입력 필요"></p>
+                <p><label id="pw">비밀번호 </label><input type="password" placeholder="비밀번호 입력 필요"></p>
+                <div class="infosearch">
+                    <span><label id="idsearch">아이디 찾기</label></span>
+                    <span><label id="pwsearch">비밀번호 찾기</label></span>
+                    <span><label id="signUp">회원가입</label></span>
+                </div><br>
+                <p><button class="loginBtn">로그인</button></p>
+                <!-- <p><button type="button" class="snsLoginBtn"><img id="kakaoLogo" src="/img/kakaoLogo.png" alt="" width="30px"></button></p>
+                 -->
+                 <a href="#"><img id="kakaoImage" src="/img/kakaoLogo.png" alt=""></a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

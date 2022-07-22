@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-1 box-sizing</title>
+    <style>
+        div { outline: 1px solid red;}
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            width: 300px;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .content {
+            width: 100px;
+            padding: 10px;
+            border: 5px solid blue;
+            /* margin: 5px; */
+            background-color: yellow;
+            box-sizing: border-box;
+            /* box-sizing:
+            content-box(default)면 width가 content의 폭,
+            border-box면 width가 border의 폭이 된다. */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content"></style> content</div>
+        <div class="content"></style>content</div>
+        <div class="content"></style>content</div>
+    </div>
+</body>
+</html>
