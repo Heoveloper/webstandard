@@ -27,6 +27,15 @@
         $btnResult1.addEventListener(`click`, result_f);
         function result_f(evt){
             console.log(`결과 확인 버튼 클릭됨!`);
+            const resultOfComputer = parseInt($val1.value) + parseInt($val2.value);
+            console.log(result);
+            const $userInput = document.getElementById(`userInput`);
+
+            if(resultOfComputer == $userInput.value) {
+                console.log(`같다`);
+            } else {
+                console.log(`틀리다`);
+            }
         }
 
         //3-2) 3-1이    일치하면 결과값 요소의 배경색을 초록색
@@ -34,6 +43,12 @@
         
 
         //4) 다시풀기 버튼 클릭
+        const $btnRestart = document.getElementById(`btnRestart`);
+        $btnRestart.addEventListener(`click`, restart_f);
+        function restart_f(evt){
+            console.log(`다시 풀기 버튼 클릭됨!`);
+        }
+
         //4-1) input 요소에 랜덤값 반영
         //4-2) 결과값 요소 초기화
     </script>
