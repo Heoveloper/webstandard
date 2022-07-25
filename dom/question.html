@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="val1" type="text">+<input id="val2" type="text">=<input id="val3" type="text">
+    <button>결과확인</button><button>다시풀기</button>
+    <script>
+        //1) 2개 랜덤값 발생
+        const randomValue1 = Math.floor(Math.random()*1000)+1;
+        const randomValue2 = Math.floor(Math.random()*1000)+1;
+
+        //2) input 요소에 랜덤값 반영
+        const $val1 = document.getElementById(`val1`);
+        const $val2 = document.getElementById(`val2`);
+
+        $val1.value = randomValue1;
+        $val2.value = randomValue2;
+
+        //3) 결과확인 버튼 클릭
+        //3-1) input 요소값을 더한 값과 사용자가 입력한 값 비교
+
+        //3-2) 3-1이    일치하면 결과값 요소의 배경색을 초록색
+        //              불일치하면 결과값 요소의 배경색을 빨간색
+        
+
+        //4) 다시풀기 버튼 클릭
+        //4-1) input 요소에 랜덤값 반영
+        //4-2) 결과값 요소 초기화
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const x= 10;
+        const y= 20;
+        const z= 30;
+
+        /* 함수 선언문은 초기화 전후 어느 때나 실행해도 오류가 나지 않는다 */
+        // function add(x, y){
+        //     const z = 40;
+        //     console.log(x, y, z);
+        // }
+        
+        /* 함수 표현식은 초기화하고 실행해야 오류가 나지 않는다 */
+        const add = function(x, y){
+            const z = 40;
+            console.log(x, y, z);
+        }
+        
+        add(x, y);
+    </script>
+</body>
+</html>

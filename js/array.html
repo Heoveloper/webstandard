@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <script>
+        const arr = [];         //빈 배열 생성
+        console.log(arr);
+        arr.push(1);            //push: 요소들 뒤로 요소 추가
+        console.log(arr);
+        arr.push(2, 3);
+        console.log(arr);
+        arr.unshift(-2, -1);    //unshift: 요소들 앞으로 요소 추가    
+        console.log(arr);
+        arr.push(4,6,7);
+        console.log(arr);
+
+        arr.splice(6, 1);       //splice: 6번째 뒤부터 1개 요소를 제거
+        console.log(arr);
+        arr.splice(6, 0, 5, 6); //splice: 6번째 뒤부터 5, 6 요소를 추가
+        console.log(arr);
+        arr.splice(7, 2);       //splice: 7번째 뒤부터 2개 요소를 제거
+        console.log(arr);
+
+        arr.pop();              //pop: 요소를 뒤부터 제거
+        console.log(arr);
+        arr.shift();            //shift: 요소를 앞부터 제거
+        console.log(arr);
+        arr.splice(3);          //splice(n): n번째 요소부터 모두 제거
+        console.log(arr);
+
+        arr[2] = 100;           //원하는 n번째 요소를 교체
+        console.log(arr);
+
+        const arr2 = [...arr];  //배열 복제
+        console.log(arr);
+        console.log(arr2);
+
+        arr.pop()           //배열 arr의 맨 뒤 요소만 삭제 => 복제된 arr2에는 영향X
+        console.log(arr);
+        console.log(arr2);
+
+        //모든 요소에 순차 접근
+        /* 일반 for문 */
+        for(let i = 0; i < arr2.length; i++){
+            console.log(arr2[i]*2);
+        }
+        /* for~of */
+        for(let ele of arr2){
+            console.log(ele*2);
+        }
+        /* 고차함수 */
+        console.log(`--고차함수--`)
+        arr2.forEach(function(ele, idx, arr){   //forEach: [].length만큼 수행
+            console.log(ele, idx, arr);
+        });
+        arr2.forEach(function(ele){             //함수명 없으므로 익명함수
+            console.log(ele*2);
+        });
+        arr2.forEach((ele)=>{                   //화살표 함수
+            console.log(ele*2);
+        });
+        arr2.forEach(ele=>console.log(ele*2));  //매개값이 하나면 괄호 생략 가능
+
+
+
+
+
+        /* 개인 연습 */
+        // let fruits = [`사과`, `바나나`]
+        // console.log(fruits.length);
+        // fruits.push(`망고`);
+        // console.log(fruits.length);
+        // console.log(fruits[0]);
+        // console.log(fruits.indexOf(`바나나`));
+        // console.log(fruits.indexOf(`망고`));
+    </script>
+    
+</body>
+</html>

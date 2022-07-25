@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random</title>
+    <style>
+        .wrapper {
+            display: flex;
+        }
+        .rannum1, .rannum2, .answer, .answer, .result {
+            margin-right: 15px;
+        }
+        .again, .result {
+            background-color: orange;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input type="text" value="" class="rannum1"> +
+            <input type="text" value="" class="rannum2"> =
+            <input type="text" value="" class="answer">
+        <button class="result"> 결과 확인 </button>
+        <button class="again"> 다시 </button>
+    </div>
+    <script>
+        const $rannum1 = Math.floor(Math.random() * 1000);
+        const $rannum2 = Math.floor(Math.random() * 1000);
+
+        const one = document.querySelector(`.rannum1`).value = $rannum1;
+        const two = document.querySelector(`.rannum2`).value = $rannum2;
+        const answer = document.querySelector(`.answer`);
+
+        const $result = document.querySelector('.result');
+        const $again = document.querySelector('.again');
+
+        $result.addEventListener('click', handlerResult);
+        $again.addEventListener('click', handlerAgain);
+
+        function handlerResult(evt) {
+            const r = $rannum1 + $rannum2;
+            console.log(r);
+        }
+
+
+        /*
+        const $count = document.getElementById('count');
+        ++$count.value;
+        }
+
+        function handlerDecrease(evt){
+        console.log(evt);
+        console.log(evt.target);
+
+        const $count = document.getElementById('count');
+        --$count.value;
+        }
+        */
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object1</title>
+</head>
+<body>
+    <script>
+        const person = {};          //빈 객체 생성
+        person.name = `홍길동`;
+        person.age = 30;
+
+        /* 함수 */
+        // person.eat = function(){
+        //     console.log(`먹다`);
+        // }
+
+        person.study = function(){
+            console.log(`공부하다`);
+        }
+
+        /* 화살표 함수 */
+        // person.eat = ()=>{
+        //     console.log(`먹다`);
+        // }
+
+        /* 화살표 함수 (요소가 하나일 때 중괄호 생략) */
+        person.eat = ()=>console.log(`먹다`);
+
+        console.log(person.name, person.age);
+        console.log(person[`name`], person[`age`]); //프로퍼티 키가 유동적으로 바뀔 때 주로 사용
+        person.eat();
+        person.study();
+    </script>
+</body>
+</html>
