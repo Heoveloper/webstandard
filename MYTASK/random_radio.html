@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random</title>
+    <style>
+      #btnResult {
+        background-color: orange;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        width: 95px;
+        height: 25px;
+        cursor: pointer;
+      }
+      #btnAgain {
+        background-color: orange;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        width: 95px;
+        height: 25px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset>
+      <legend>사칙연산 선택</legend>
+      <input type="radio" name="choice" id="plus" />
+      <label for="plus">덧셈</label>
+      <input type="radio" name="choice" id="minus" />
+      <label for="minus">뺄셈</label>
+      <input type="radio" name="choice" id="multiplication" />
+      <label for="multiplication">곱셈</label>
+      <input type="radio" name="choice" id="division" />
+      <label for="division">나눗셈</label>
+    </fieldset>
+
+    <input type="text" id="num1" /><span id="span">+</span
+    ><input type="text" id="num2" />=<input type="text" id="answer" />
+    <button id="btnResult">결과확인</button>
+    <button id="btnAgain">다시풀기</button>
+
+    <script>
+      /*
+    document.querySelector('input[name="radio"]').checked; // 체크 여부(checked)
+    document.querySelector('input[name="radio"]:checked').value; // 체크된 값(checked value)
+    */
+
+      //덧셈 라디오박스 선택
+      const $radioPlus = document.getElementById("plus");
+
+      //덧셈 라디오박스 클릭시 이벤트
+      $radioPlus.addEventListener("click", funcPlus);
+
+      //덧셈 함수
+      function funcPlus(evt) {
+        console.log("덧셈 라디오박스가 클릭되었습니다.");
+        const $span = document.getElementById("span");
+        $span.innerText = "+";
+        document.getElementById("answer").value = null;
+        document.getElementById("answer").style.backgroundColor = "white";
+      }
+
+      //뺄셈 라디오박스 선택
+      const $radioMinus = document.getElementById("minus");
+
+      //뺄셈 라디오박스 클릭시 이벤트
+      $radioMinus.addEventListener("click", funcMinus);
+
+      //뺄셈 함수
+      function funcMinus(evt) {
+        console.log("뺄셈 라디오박스가 클릭되었습니다.");
+        const $span = document.getElementById("span");
+        $span.innerText = "-";
+        document.getElementById("answer").value = null;
+        document.getElementById("answer").style.backgroundColor = "white";
+      }
+
+      //곱셈 라디오박스 선택
+      const $radioMultiplication = document.getElementById("multiplication");
+
+      //곱셈 라디오박스 클릭시 이벤트
+      $radioMultiplication.addEventListener("click", funcMultiplication);
+
+      //곱셈 함수
+      function funcMultiplication(evt) {
+        console.log("곱셈 라디오박스가 클릭되었습니다.");
+        const $span = document.getElementById("span");
+        $span.innerText = "*";
+        document.getElementById("answer").value = null;
+        document.getElementById("answer").style.backgroundColor = "white";
+      }
+
+      //나눗셈 라디오박스 선택
+      const $radioDivision = document.getElementById("division");
+
+      //나눗셈 라디오박스 클릭시 이벤트
+      $radioDivision.addEventListener("click", funcDivision);
+
+      //나눗셈 함수
+      function funcDivision(evt) {
+        console.log("곱셈 라디오박스가 클릭되었습니다.");
+        const $span = document.getElementById("span");
+        $span.innerText = "/";
+        document.getElementById("answer").value = null;
+        document.getElementById("answer").style.backgroundColor = "white";
+      }
+
+      //난수 2개 생성
+      const random1 = Math.floor(Math.random() * 1000) + 1;
+      const random2 = Math.floor(Math.random() * 1000) + 1;
+
+      //난수박스 선택
+      const $num1 = document.getElementById("num1");
+      const $num2 = document.getElementById("num2");
+
+      //난수박스에 값 집어넣기
+      $num1.value = random1;
+      $num2.value = random2;
+
+      //결과확인버튼 선택
+      const $btnResult = document.getElementById("btnResult");
+
+      //결과확인버튼 클릭시 이벤트
+      $btnResult.addEventListener("click", funcResult);
+
+      //결과함수
+      function funcResult(evt) {
+        const $answer = document.getElementById("answer");
+        if ($answer.value == "") {
+          console.log("답안을 먼저 작성해주세요.");
+        } else if ( document.querySelector('input[name="choice"][id="minus"]').checked ) {
+          console.log("결과확인버튼이 클릭되었습니다.");
+          const minusResult = parseInt($num1.value) - parseInt($num2.value);
+          console.log(`결과는 ${minusResult} 입니다`);
+
+          if (minusResult == $answer.value) {
+            console.log("일치");
+            document.getElementById("answer").style.backgroundColor =
+              "yellowgreen";
+          } else {
+            console.log("불일치");
+            document.getElementById("answer").style.backgroundColor = "red";
+          }
+        } else if ( document.querySelector('input[name="choice"][id="multiplication"]') .checked ) {
+          console.log("결과확인버튼이 클릭되었습니다.");
+          const multiplicationResult =
+            parseInt($num1.value) * parseInt($num2.value);
+          console.log(`결과는 ${multiplicationResult} 입니다`);
+
+          if (multiplicationResult == $answer.value) {
+            console.log("일치");
+            document.getElementById("answer").style.backgroundColor =
+              "yellowgreen";
+          } else {
+            console.log("불일치");
+            document.getElementById("answer").style.backgroundColor = "red";
+          }
+        } else if ( document.querySelector('input[name="choice"][id="division"]').checked ) {
+          console.log("결과확인버튼이 클릭되었습니다.");
+          const divisionResult = (
+            parseInt($num1.value) / parseInt($num2.value)
+          ).toFixed(2);
+          console.log(`결과는 ${divisionResult} 입니다`);
+
+          if (divisionResult == $answer.value) {
+            console.log("일치");
+            document.getElementById("answer").style.backgroundColor =
+              "yellowgreen";
+          } else {
+            console.log("불일치");
+            document.getElementById("answer").style.backgroundColor = "red";
+          }
+        } else {
+          console.log("결과확인버튼이 클릭되었습니다.");
+          const plusResult = parseInt($num1.value) + parseInt($num2.value);
+          console.log(`결과는 ${plusResult} 입니다`);
+
+          if (plusResult == $answer.value) {
+            console.log("일치");
+            document.getElementById("answer").style.backgroundColor =
+              "yellowgreen";
+          } else {
+            console.log("불일치");
+            document.getElementById("answer").style.backgroundColor = "red";
+          }
+        }
+      }
+
+      //다시풀기버튼 선택
+      const $btnAgain = document.getElementById("btnAgain");
+
+      //다시풀기버튼 클릭시 이벤트
+      $btnAgain.addEventListener("click", funcAgain);
+
+      //다시함수
+      function funcAgain(evt) {
+        console.log("다시풀기버튼이 클릭되었습니다.");
+        const $answer = document.getElementById("answer");
+        const random1 = Math.floor(Math.random() * 1000) + 1;
+        const random2 = Math.floor(Math.random() * 1000) + 1;
+        $num1.value = random1;
+        $num2.value = random2;
+        $answer.value = null;
+        $answer.style.backgroundColor = "white";
+      }
+    </script>
+  </body>
+</html>

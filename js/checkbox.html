@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>간식 선택</legend>
+        <input type="checkbox" name="" value="라면" id="v1"><label for="v1">라면</label>
+        <input type="checkbox" name="" value="떡볶이" id="v2"><label for="v2">떡볶이</label>
+        <input type="checkbox" name="" value="순대" id="v3"><label for="v3">순대</label>
+    </fieldset>
+    <div id="msg"></div>
+    <script>
+        const $snacks = document.querySelectorAll('input[type=checkbox]');
+        const $msg = document.getElementById('msg');
+        
+        console.log($snacks);
+        $snacks.forEach(ele=>{
+            ele.addEventListener('click', e=>{
+                console.log(e.target.value);
+                // const msg = `${e.target.value} 을(를) 선택했습니다.`;
+                const str = checkCheckedBox();
+                if(str.length == 0) {
+                    $msg.textContent = '';
+                    return;
+                }
+                const msg = `${str} 을(를) 선택했습니다.`;
+                $msg.textContent = msg;
+            });
+        });
+        
+        function checkCheckedBox(){
+            // console.log('checkCheckedBox() 호출됨!');
+            let str = '';
+
+            for(let $snack of $snacks) {
+                if($snack.checked) {
+                    str = str + $snack.value + ', '
+                }
+            }
+            return str.substr(0, str.length-2); //msg 끝에 콤마 삭제
+            // $snacks.forEach(ele=>console.log(ele.checked));
+        }
+    </script>
+</body>
+</html>

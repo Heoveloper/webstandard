@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <legend>간식 선택</legend>
+        <input type="radio" name="snack" id="v1"><label for="">라면</label>
+        <input type="radio" name="snack" id="v2"><label for="">떡볶이</label>
+        <input type="radio" name="snack" id="v3"><label for="">순대</label>
+    </fieldset>
+    <div id="msg"></div>
+    <script>
+        const $snacks = document.querySelectorAll('input[type=radio]');
+        console.log($snacks);
+        // console.log(document.querySelector('fieldset').children);
+        // console.log(document.querySelector('fieldset').firstElementChild);
+        // console.log(document.querySelector('fieldset').lastElementChild);
+
+        //case1)
+        // for(let i=0; i<$snacks.length; i++) {
+        //     $snacks[i].addEventListener('click', selectSnack_h);
+        // }
+
+        //case2)
+        // for(let $snack of $snacks) {
+        //     $snacks[i].addEventListener('click', selectSnack_h);
+        // }
+
+        //case3)
+        $snacks.forEach(function(ele){
+            ele.addEventListener('click', selectSnack_h)
+        });
+
+        //case4)
+        $snacks.forEach((ele)=>{
+            ele.addEventListener('click', selectSnack_h)
+        });
+
+        //case5) 매개변수 하나일 때
+        $snacks.forEach(ele=>ele.addEventListener('click', selectSnack_h));
+
+        function selectSnack_h(evt) {
+            // console.log(evt.target.id);
+            // console.log(evt.target.parentElement);
+            // console.log(evt.target.parentElement.parentElement);
+            // console.log(evt.target.previousElementSibling);
+            // console.log(evt.target.nextElementSibling);
+            // console.log(evt.target.nextElementSibling.textContent);
+            // console.log(evt.target.closest('body'));
+
+            const selectedSnack = evt.target.nextElementSibling.textContent;
+            console.log(selectedSnack);
+            const msg = `${selectedSnack} 을(를) 선택했습니다.`;
+            document.getElementById('msg').textContent = msg;
+        }
+
+
+
+
+        // const $v1 = document.querySelector('#v1');
+        // const $v2 = document.querySelector('#v2');
+        // const $v3 = document.querySelector('#v3');
+
+        // $v1.addEventListener('click', selectV1_h);
+        // $v1.addEventListener('contextmenu', selectV1_h);
+
+        // $v2.addEventListener('click', selectV2_h);
+        // $v3.addEventListener('click', selectV3_h);
+
+        // function selectV1_h(e) {
+        //     console.log('v1클릭!');
+        //     console.log(e.type);        //e.type(이벤트명) = click
+        //     console.log(e.target);
+        // }
+        // function selectV1_h(e) {
+        //     console.log('v2클릭!');
+        // }
+        // function selectV1_h(e) {
+        //     console.log('v3클릭!');
+        // }
+    </script>
+</body>
+</html>
