@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>checkboxTask</title>
+</head>
+<body>
+    <fieldset>
+        <legend>사칙연산 선택</legend>
+        <input type="checkbox" name="" value="덧셈" id="v1"><label for="v1">덧셈</label>
+        <input type="checkbox" name="" value="뺄셈" id="v2"><label for="v2">뺄셈</label>
+        <input type="checkbox" name="" value="곱셈" id="v3"><label for="v3">곱셈</label>
+        <input type="checkbox" name="" value="나눗셈" id="v4"><label for="v4">나눗셈</label>
+    </fieldset>
+
+    <input type="text" id="num1" /><span id="span1">+</span>
+    <input type="text" id="num2" /><span id="span2">+</span>
+    <input type="text" id="num3" />=<input type="text" id="answer" />
+    <button id="btnResult">결과확인</button>
+    <button id="btnAgain">다시풀기</button>
+
+    <script>
+    const maxChecked = 2;   //선택가능한 체크박스 최대 개수
+    const totalChecked = 0;
+
+    const $calcs = document.querySelectorAll('input[type=checkbox]');
+
+
+    //난수 3개 생성
+    const random1 = Math.floor(Math.random() * 100) + 1;
+    const random2 = Math.floor(Math.random() * 100) + 1;
+    const random3 = Math.floor(Math.random() * 100) + 1;
+
+    //난수박스 선택
+    const $num1 = document.getElementById("num1");
+    const $num2 = document.getElementById("num2");
+    const $num3 = document.getElementById("num3");
+
+    //난수박스에 값 집어넣기
+    $num1.value = random1;
+    $num2.value = random2;
+    $num3.value = random3;
+    </script>
+
+
+    
+</body>
+</html>
