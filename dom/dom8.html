@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="create_element.js"></script>
+    <title>Dom8</title>
+    <style>
+      * {
+        /* outline: 1px solid skyblue; */
+      }
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      ul, li {
+        list-style: none;
+      }
+      #container .wrap {
+        display: flex;
+        align-items: stretch;
+      }
+      #container .wrap .title {
+        align-self: center;
+        width: 80px;
+      }
+      #container .wrap .comment {
+        flex: 1;
+      }
+      #container .wrap .btn {
+        width: 60px;
+        /* margin-left: 5px; */
+      }
+      button {
+        margin-left: 5px;
+      }
+      #container .comment__list .comment__item-wrap{
+        display: flex;
+      }
+      #container .comment__list .comment__item-wrap .comment__item{
+        flex: 1;
+      }
+      #container .comment__list .comment__item-wrap .btn.btn_del{
+        width: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="wrap">
+        <label for="" class="title">댓글작성</label>
+        <textarea class="comment" name="" id="11" cols="30" rows="3" placeholder="댓글 입력(30자 제한)"></textarea>
+        <button class="btn btn__write">등록</button>
+      </div>
+
+      <div class="comment__list">
+        <ul class="comments">
+          <div class="comment__item-wrap">
+            <li class="comment_item1">
+              댓글1
+              <button class="btn btn_modify">수정</button>
+              <button class="btn btn_del">삭제</button>
+            </li>
+          </div>
+          <div class="comment__item-wrap">
+            <li class="comment_item1">
+              댓글2
+              <button class="btn btn_modify">수정</button>
+              <button class="btn btn_del">삭제</button>
+            </li>
+          </div>
+          <div class="comment__item-wrap">
+            <li class="comment_item1">
+              댓글3
+              <button class="btn btn_modify">수정</button>
+              <button class="btn btn_del">삭제</button>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+        // 내가 한 것
+        // const $textarea = document.getElementsByClassName('comment')[0];
+        // const $ul = document.querySelector('ul');
+        // const addComment = e => {
+        //     console.log('click');
+        //     //li를 ul의 자식요소로 추가
+        //     $ul.appendChild(makeElements('li', null, $textarea.value));
+        // }
+
+        // document.querySelector('.wrap .btn.btn__write').addEventListener('click', addComment);
+
+        // 풀이
+        const addComment_h = e=>{
+          console.log('클릭!');
+          const $comment = document.querySelector('.comment');
+          const comment = $comment.value.trim();
+
+          if(comment.length) {
+            //1) 댓글 요소 생성
+            const $div = makeElements('div', {class: 'comment__item=wrap'},
+                          makeElements('li', {class:'comment__item'}, comment,
+                          makeElements('button', {class:'btn btn__modify'}, '수정'),
+                          makeElements('button', {class:'btn btn__del'}, '삭제'))
+                          );
+            console.log($div);
+            //2) ul 요소의 자식요소로 추가
+            const $comments = document.querySelector('.comment__list > .comments');
+            $comments.appendChild($div);
+            
+            //3) textarea.value 초기화
+            $comment.value = '';
+
+            //4) button에 이벤트 등록
+            //4-1) 수정버튼
+            $div.querySelector('.btn.btn__modify')
+            .addEventListener('click', e=>{
+              console.log('수정');
+            })
+            //4-2) 삭제버튼
+            $div.querySelector('.btn.btn__del')
+            .addEventListener('click', e=>{
+              const $child = e.target.closest('.comment__item-wrap');
+              console.log('삭제');
+              $comments.removeChild($comment);
+            });
+          } else {
+            alert('댓글 입력 바랍니다.');
+            $comment.focus();
+          }
+        };
+        
+        document.querySelector('.btn.btn__write').addEventListener('click', addComment_h);
+    </script>
+
+<!-- const addMenu_h = e => {
+    console.log('클릭!');
+    //1) Fragment 생성
+    const $fragment = document.createDocumentFragment();
+
+    //2) li요소 생성 후 $fragment의 자식요소로 추가
+    $fragment.appendChild(makeElements('li', null, 'menu1'));
+    $fragment.appendChild(makeElements('li', null, 'menu2'));
+    $fragment.appendChild(makeElements('li', null, 'menu3'));
+
+    //3) $fragment를 ul의 자식요소로 추가
+    document.querySelector('ul').appendChild($fragment);
+}
+
+document.querySelector('button').addEventListener('click', addMenu_h); -->
+  </body>
+</html>

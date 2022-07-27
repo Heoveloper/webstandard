@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a:active {              /* active: 클릭했을 때 (기본: 빨강) */
+            color: red;
+        }
+        a:visited {             /* visited: 방문한 이력 있을 때 (기본: 보라) */
+            color: green;
+        }
+        a:link {                /* link: 방문한 이력 없을 때 (기본: 파랑) */
+            color:skyblue;
+        }
+        a:hover {               /* hover: 마우스 오버 시 */
+            cursor: progress;
+            background: linear-gradient(to right, red, yellow, green);
+            color: white;
+            font-weight: bold;
+        }
+        a:active, a:visited, a:link, a:hover {
+            cursor: pointer;
+        }
+        .btn {
+            background-color: yellowgreen;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.3em;
+            font-weight: bold;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <a href="#">버튼추가</a>
+    <div id="container">
+        <!-- <button class="btn">클릭</button> -->
+    </div>
+
+    <script>
+        const $aTag = document.querySelector('a')
+        const addButton_h = function(evt){
+            evt.preventDefault();   //기본 이벤트를 취소하는 메서드
+            console.log('클릭~!' + evt.target);
+
+            //1) Element 생성
+            const $button = document.createElement('button'); //속성, 컨텐츠 X
+            console.log($button);
+
+            //2) Textnode 생성
+            const $textNode = document.createTextNode('클릭');
+            //↑ 시작태그와 종료태그 사이 = 콘텐츠, 즉 자식
+            console.log($textNode);
+
+            //3) Element의 자식으로 Textnode를 추가
+            $button.appendChild($textNode);
+            console.log($button);
+
+            //4) #container의 자식으로 #button 추가
+            const $parent = document.getElementById('container');
+            $parent.appendChild($button);
+
+            //5) $button에 속성 추가하기
+            $button.classList.add('btn');
+
+            //6) $button에 click 이벤트 등록
+            $button.addEventListener('click', function(){
+                console.log('클릭!');
+            });
+        }
+        
+        $aTag.addEventListener('click', addButton_h);
+    </script>
+</body>
+</html>

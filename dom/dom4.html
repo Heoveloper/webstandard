@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>버튼 누르면 ul 생성</title>
+    <script src="create_element.js"></script>
+  </head>
+  <body>
+    <button>클릭</button>
+    <div id="container">
+      <!-- <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+        </ul> -->
+    </div>
+    <script>
+      const $button = document.querySelector("button");
+
+      const ul_h = function (evt) {
+        const $ul = makeElements(
+          "ul",
+          null,
+          makeElements("li", null, "menu1"),
+          makeElements("li", null, "menu2"),
+          makeElements("li", null, "menu3")
+        );
+        document.getElementById("container").appendChild($ul);
+      };
+
+      $button.addEventListener("click", ul_h);
+    </script>
+  </body>
+</html>
