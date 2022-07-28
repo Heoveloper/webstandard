@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event4: 메뉴를 선택하면 선택한 li메뉴 배경색을 노란색으로 적용</title>
+    <style>
+        * {outline: 1px solid skyblue;}
+        .menu {outline: 3px solid blue;}
+        .active {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul class="menu">
+            <li class="menu__item" data-selected-menu="m1">menu1</li>
+            <li class="menu__item" data-selected-menu="m2">menu2</li>
+            <li class="menu__item" data-selected-menu="m3">menu3</li>
+        </ul>
+        <div id="msg">메뉴를 선택해주세요!</div>
+    </div>
+
+    <script>
+        
+
+        const menuItemClick_h = e => {
+            console.log(e.target.tagName);
+            //li요소만 처리
+            if(e.target.tagName != 'LI') return;
+            
+            const $menuItems = document.querySelectorAll('#container .menu .menu__item');
+            // console.log($menuItems); //변수 확인
+
+            //case1)
+            // for(let ele of $menuItems) {
+            //     if(ele == e.target) {
+            //         ele.classList.add('active');
+            //     } else {
+            //         ele.classList.remove('active');
+            //     }
+            // }
+
+            //case1-1) 위의 for문이랑 element만 다르다.
+            // for(let $m of $menuItems) {
+            //     if($m == e.target) {
+            //         $m.classList.add('active');
+            //     } else {
+            //         $m.classList.remove('active');
+            //     }
+            // }
+
+            //case2)
+            // for(let $menuItem of $menuItems) {
+            // $menuItem.classList.toggle('active', $menuItem == e.target);
+            // }
+
+            //case3) forEach
+            // $menuItems.forEach(function($menuItem){
+            //     $menuItem.classList.toggle('active', $menuItem == e.target);
+            // })
+            //case3-2) forEach 화살표함수
+            $menuItems.forEach($menuItem=>
+                $menuItem.classList.toggle('active', $menuItem == e.target));
+        }
+
+        document.querySelector('.menu')
+        .addEventListener('click', menuItemClick_h);
+
+        //나의 답안(미완성)
+        // const changeBgColor = function (e) {
+        //     const {type, target, currentTarget} = e;
+        //     const $menu = document.querySelector('.menu');
+        //     const $li = document.querySelectorAll('.menu__item');
+        //     const text = e.target.textContent;
+
+        //     $li.classList.toggle('active', text == 'menu1');
+        //     $li.classList.toggle('active', text == 'menu2');
+        //     $li.classList.toggle('active', text == 'menu3');
+        // }
+
+        // const selectMenu_h = function (e) {
+        //     console.log(e.target.classList);
+        //     const msg = `${e.target.textContent} 선택 !!!`;
+        //     document.getElementById('msg').textContent = msg;
+
+        //     changeBgColor(e);
+        // }
+
+        // document.querySelector('#container .menu')
+        // .addEventListener('click', selectMenu_h);
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event3</title>
+    <style>
+        * {outline: 1px solid skyblue;}
+
+        .color__red {background-color: red;}
+        .color__green {background-color: green;}
+        .color__blue {background-color: blue;}
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul class="menu">
+            <li class="menu__item" data-selected-menu="m1">menu1</li>
+            <li class="menu__item" data-selected-menu="m2">menu2</li>
+            <li class="menu__item" data-selected-menu="m3">menu3</li>
+        </ul>
+        <div id="msg">메뉴를 선택해주세요!</div>
+    </div>
+
+    <script>
+
+        //메뉴 배경색 변경
+        const changeBgColor = e => {
+
+            //객체 구조분해(distructuring)
+            const {type, target, currentTarget} = e;
+            // const type = e.type;
+            // const target = e.target;
+            // const currentTarget = e.currentTarget;
+
+            //ul 선택
+            const $menu = document.querySelector('.menu');
+
+            //케밥케이스로 설정해도 dataset으로 데이터 읽어올 땐 캐멀케이스로
+            const choice = target.dataset.selectedMenu;
+
+            //토글 매개값 2개 #유용하게 잘쓰인다.
+            $menu.classList.toggle('color__red', choice == 'm1');
+            $menu.classList.toggle('color__green', choice == 'm2');
+            $menu.classList.toggle('color__blue', choice == 'm3');
+
+            //스위치문
+            // switch(target.dataset.selectedMenu) {
+            //     case "m1":
+            //         // $menu.style.backgroundColor='red'; //인라인 방식
+            //         $menu.classList.toggle('color__red');
+            //         break;
+            //     case "m2":
+            //         $menu.classList.toggle('color__green');
+            //         break;
+            //     case "m3":
+            //         $menu.classList.toggle('color__blue');
+            //         break;
+            // }
+        }
+
+        const selectMenu_h = e => {
+            console.log(e.type, e.target, e.currentTarget);
+            const msg = `${e.target.textContent}을(를) 선택했네요~`;
+            document.getElementById('msg').textContent = msg;
+
+            changeBgColor(e);
+        }
+        document.querySelector('#container .menu')
+        .addEventListener('click', selectMenu_h);
+    </script>
+</body>
+</html>

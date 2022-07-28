@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event2</title>
+    <style>
+        li:hover {
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: bold;
+            color: skyblue;
+        }
+        #msg {
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul class="menu">
+            <li class="menu__item">menu1</li>
+            <li class="menu__item">menu2</li>
+            <li class="menu__item">menu3</li>
+        </ul>
+        <div id="msg"></div>
+    </div>
+
+    <script>
+        //내가 처음 풀어본 과제
+        const $menu1 = document.querySelector('.menu li:nth-child(1)');
+        const $menu2 = document.querySelector('.menu li:nth-child(2)');
+        const $menu3 = document.querySelector('.menu li:nth-child(3)');
+        const choiceMenu_h = function(e) {
+            console.log('메뉴 클릭');
+            document.getElementById('msg').textContent =
+            `${e.target.textContent} 선택되었습니다.`;
+            // ${document.querySelector('.menu li:nth-child(n)').textContent}
+        }
+        $menu1.addEventListener('click', choiceMenu_h, false);
+        $menu2.addEventListener('click', choiceMenu_h, false);
+        $menu3.addEventListener('click', choiceMenu_h, false);
+    </script>
+</body>
+</html>
