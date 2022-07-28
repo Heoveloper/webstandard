@@ -7,17 +7,9 @@
     <script src="create_element.js"></script>
     <title>Dom8</title>
     <style>
-      * {
-        /* outline: 1px solid skyblue; */
-      }
-      ul {
-        margin: 0;
-        padding: 0;
-      }
-      ul,
-      li {
-        list-style: none;
-      }
+      * { /* outline: 1px solid skyblue; */ }
+      ul { margin: 0; padding: 0; }
+      ul, li { list-style: none; }
       #container .wrap {
         display: flex;
         align-items: stretch;
@@ -58,36 +50,24 @@
         <ul class="comments">
           <div class="comment__item-wrap">
             <li class="comment__item">댓글1</li>
-            <button class="btn btn__del">삭제</button>
             <button class="btn btn__modify">수정</button>
+            <button class="btn btn__del">삭제</button>
           </div>
           <div class="comment__item-wrap">
             <li class="comment__item">댓글2</li>
-            <button class="btn btn__del">삭제</button>
             <button class="btn btn__modify">수정</button>
+            <button class="btn btn__del">삭제</button>
           </div>
           <div class="comment__item-wrap">
             <li class="comment__item">댓글3</li>
-            <button class="btn btn__del">삭제</button>
             <button class="btn btn__modify">수정</button>
+            <button class="btn btn__del">삭제</button>
           </div>
         </ul>
       </div>
     </div>
 
     <script>
-      // 내가 한 것
-      // const $textarea = document.getElementsByClassName('comment')[0];
-      // const $ul = document.querySelector('ul');
-      // const addComment = e => {
-      //     console.log('click');
-      //     //li를 ul의 자식요소로 추가
-      //     $ul.appendChild(makeElements('li', null, $textarea.value));
-      // }
-
-      // document.querySelector('.wrap .btn.btn__write').addEventListener('click', addComment);
-
-      // 풀이
       const addComment_h = (e) => {
         console.log("클릭!");
         const $comment = document.querySelector(".comment");
@@ -99,8 +79,8 @@
             "div",
             { class: "comment__item-wrap" },
             makeElements("li", { class: "comment__item" }, comment),
-            makeElements("button", { class: "btn btn__del" }, "삭제"),
-            makeElements("button", { class: "btn btn__modify" }, "수정")
+            makeElements("button", { class: "btn btn__modify" }, "수정"),
+            makeElements("button", { class: "btn btn__del" }, "삭제")
           );
           console.log($div);
           //2) ul 요소의 자식요소로 추가
@@ -113,18 +93,20 @@
           $comment.value = "";
 
           //4) button에 이벤트 등록
-          //4-1) 삭제버튼
-          $div.querySelector(".btn.btn__del").addEventListener("click", (e) => {
+          //4-1) 수정버튼
+          $div.querySelector(".btn.btn__modify")
+          .addEventListener("click", (e) => {
+            console.log("수정");
+            const $child = e.target.closest(".comment__item-wrap");
+            $comments.removeChild($child);
+          });
+          //4-2) 삭제버튼
+          $div.querySelector(".btn.btn__del")
+          .addEventListener("click", (e) => {
             console.log("삭제");
             const $child = e.target.closest(".comment__item-wrap");
             $comments.removeChild($child);
           });
-          //4-2)수정버튼
-          $div
-            .querySelector(".btn.btn__modify")
-            .addEventListener("click", (e) => {
-              console.log("수정");
-            });
         } else {
           alert("댓글 입력바랍니다.");
           $comment.focus();
@@ -135,21 +117,5 @@
         .querySelector(".btn.btn__write")
         .addEventListener("click", addComment_h);
     </script>
-
-    <!-- const addMenu_h = e => {
-    console.log('클릭!');
-    //1) Fragment 생성
-    const $fragment = document.createDocumentFragment();
-
-    //2) li요소 생성 후 $fragment의 자식요소로 추가
-    $fragment.appendChild(makeElements('li', null, 'menu1'));
-    $fragment.appendChild(makeElements('li', null, 'menu2'));
-    $fragment.appendChild(makeElements('li', null, 'menu3'));
-
-    //3) $fragment를 ul의 자식요소로 추가
-    document.querySelector('ul').appendChild($fragment);
-}
-
-document.querySelector('button').addEventListener('click', addMenu_h); -->
   </body>
 </html>
