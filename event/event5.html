@@ -36,18 +36,18 @@
     <script>
         
         const selectAll_h = e => {
-            const $hobbies = document.querySelectorAll('.hobby li');
+            const $hobbies = document.querySelectorAll('.hobby .hobby__item input[type=checkbox]');
             console.log($hobbies);
-           for(let $hobby of $hobbies) {
+            for(let $hobby of $hobbies) {
             if($hobby.checked){
                 $hobby.removeAttribute('checked');
             } else {
-                $hobby.setAttribute('checked');
+                $hobby.setAttribute('checked', 'checked');
             }
-           }
+            }   
         }
 
-        document.querySelector('.select-all')
+        document.querySelector('.select-all input[type=checkbox]')
         .addEventListener('change', selectAll_h);
     </script>
 </body>
