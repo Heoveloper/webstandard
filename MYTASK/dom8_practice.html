@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="create_element.js"></script>
-    <title>Dom8</title>
+    <script src="/dom/create_element.js"></script>
+    <title>Dom8_practice</title>
     <style>
       * { /* outline: 1px solid skyblue; */ }
       ul { margin: 0; padding: 0; }
@@ -48,7 +48,7 @@
       </div>
       <div class="comment__list">
         <ul class="comments">
-          <div class="comment__item-wrap">
+          <!-- <div class="comment__item-wrap">
             <li class="comment__item">댓글1</li>
             <button class="btn btn__modify">수정</button>
             <button class="btn btn__del">삭제</button>
@@ -62,7 +62,7 @@
             <li class="comment__item">댓글3</li>
             <button class="btn btn__modify">수정</button>
             <button class="btn btn__del">삭제</button>
-          </div>
+          </div> -->
         </ul>
       </div>
     </div>
@@ -97,8 +97,6 @@
           $div.querySelector(".btn.btn__modify")
           .addEventListener("click", (e) => {
             console.log("수정");
-            const $child = e.target.closest(".comment__item-wrap");
-            $comments.removeChild($child);
           });
           //4-2) 삭제버튼
           $div.querySelector(".btn.btn__del")
