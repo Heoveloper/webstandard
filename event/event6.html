@@ -35,7 +35,7 @@
             </ul>
         </fieldset>
         <div class="btngrp"><button class="btn btn__del">삭제</button></div>
-        <div id="msg">삭제 원하면 삭제 버튼 클릭</div>
+        <div id="msg">삭제할 항목을 선택 후 삭제 버튼 클릭</div>
     </div>
 
     <script>
@@ -65,7 +65,7 @@
                 });
                 if (countOfUncheckedInput != 0) {
                     str = str.substring(0, str.length-2);
-                    str = `${str} 을(를) 삭제하였습니다.`;
+                    str = `${str} 을(를) 삭제했습니다.`;
                 } else {
                     str = '삭제대상이 없습니다.';
                 }
