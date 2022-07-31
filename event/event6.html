@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event5</title>
+    <title>Event6</title>
     <style>
         ul, li{margin:0; padding:0; list-style: none;}
         fieldset {
@@ -35,7 +35,7 @@
             </ul>
         </fieldset>
         <div class="btngrp"><button class="btn btn__del">삭제</button></div>
-        <div id="msg">삭제할 항목을 선택 후 삭제 버튼 클릭</div>
+        <div id="msg">취미를 선택하세요.</div>
     </div>
 
     <script>
@@ -49,7 +49,7 @@
         const btnDel_h = e => {
             console.log('삭제버튼 클릭됨!');
             const $hobbies = document.querySelectorAll('.hobby__item input[type=checkbox]');
-            const answer = confirm('삭제할래?');
+            const answer = confirm('삭제하실래요?');
             
             //case1)
             if(answer) {

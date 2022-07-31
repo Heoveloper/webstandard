@@ -4,14 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event5</title>
+    <title>Event6 스스로</title>
     <style>
         ul, li{margin:0; padding:0; list-style: none;}
         fieldset {
             display: inline;
         }
         button {
+            display: inline;
             margin-top: 5px;
+        }
+        .btn__modify:hover {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .btn__del:hover {
+            font-weight: bold;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -34,48 +43,131 @@
                 </li>
             </ul>
         </fieldset>
-        <div class="btngrp"><button class="btn btn__del">삭제</button></div>
-        <div id="msg">삭제 원하면 삭제 버튼 클릭</div>
+        <div class="btngrp">
+            <button class="btn btn__modify">수정</button>
+            <button class="btn btn__del">삭제</button>
+        </div>
+        <div id="msg">취미를 선택하세요.</div>
     </div>
 
     <script>
         //이벤트 핸들러
+
+        //모든 체크박스(취미) 목록
+        const $hobbies = document.querySelectorAll('.hobby__item input[type=checkbox]');
         //1) 전체선택
         const allChkClick_h = e => {
-            const $hobbies = document.querySelectorAll('.hobby__item input[type=checkbox]');
             $hobbies.forEach($hobby=>$hobby.checked = e.target.checked ? true : false);
         }
-        //2) 삭제
-        const btnDel_h = e => {
-            // console.log('삭제버튼 클릭됨!');
-            const answer = confirm('삭제할래?');
-            // console.log(answer);
 
-            const $hobbies = document.querySelectorAll('.hobby__item input[type=checkbox]');
+        //2) 수정
+        const btnMod_h = e => {
+            //입력한 수정 내용
+            const $modText = prompt("수정할 내용을 입력해주세요.");
+            //선택된 체크박스 목록 정의
+            const checked = 'input[name="hobby"]:checked';
+            //선택된 체크박스 하나 가져오기
+            const $checked =
+            document.querySelector(checked);
+            //선택된 체크박스 목록 전체 가져오기
+            const $allChecked =
+            document.querySelectorAll(checked);
+            //선택된 체크박스 개수
+            const checkboxCnt = $allChecked.length;
+            //선택한 체크박스 내용
+            // let $checkboxText = $checked.nextSibling.textContent;
+
+            //수정할 항목이 1개인 경우만 수정 가능
+            if (checkboxCnt == 0) {
+                alert("선택한 수정 항목이 없습니다.");
+            } else if (checkboxCnt == 1) {
+                $modText;
+                $checked.value = $modText;
+                $checked.nextSibling.textContent = $modText;
+            } else {
+                alert("수정은 한 항목씩만 가능합니다.");
+            };
+
+
+            // if(checkboxCnt == 1) {
+            //     $modText;
+            //     $checked.value = $modText;
+            //     $checked.nextSibling.textContent = $modText;
+            //     console.log($checked.nextSibling);
+            // } else if (checkboxCnt == 0) {
+            //     alert("선택한 수정 항목이 없습니다.")
+            // } else {
+            //     alert("수정은 한 항목씩만 가능합니다.")
+            // }
+        }
+
+
+        
+        //3) 삭제
+        const btnDel_h = e => {
+            const answer = confirm('삭제하실래요?');
             const $msg = document.getElementById('msg');
             
             if(answer) {
                 $msg.textContent='';
                 for(let $hobby of $hobbies) {
-                if($hobby.checked) {
-                    $hobby.checked = true;
-                    $msg.textContent+=`${$hobby.value} `;
-                } else {
-                    $hobby.checked = false;
+                    if($hobby.checked) {
+                        $hobby.checked = true;
+                        $msg.textContent+=`${$hobby.value} `;
+                    } else {
+                        $hobby.checked = false;
                 }}
-                    $msg.textContent+='삭제되었습니다.';
+                $msg.textContent+='삭제되었습니다.';
             } else {
                 $msg.textContent="삭제 취소되었습니다."
             }
         }
-
+        
         //이벤트 등록
-        //1) 전체선택 버튼
+        //1) 전체선택 체크
         document.getElementById('allChk')
         .addEventListener('click', allChkClick_h);
-        //2) 삭제 버튼
+        //2) 수정 버튼 클릭
+        document.querySelector('.btn.btn__modify').
+        addEventListener('click', btnMod_h);
+        //3) 삭제 버튼 클릭
         document.querySelector('.btn.btn__del').
         addEventListener('click', btnDel_h);
-    </script>
+        
+        
+        
+
+        
+        // //useless) 수정 OR 삭제
+        // const $msg = document.getElementById('msg');
+        // const btnMod_over = e => {
+        //     $msg.textContent = "수정시 항목 선택 후 해당 버튼을 클릭하세요."
+        // }
+        // const btnMod_out = e => {
+        //     $msg.textContent = "취미를 선택하세요."
+        // }
+        // const btnDel_over = e => {
+        //     $msg.textContent = "삭제시 항목 선택 후 해당 버튼을 클릭하세요."
+        // }
+        // const btnDel_out = e => {
+        //     $msg.textContent = "취미를 선택하세요."
+        // }
+        
+        
+        // //4) 수정 마우스오버
+        // document.querySelector(".btn.btn__modify").
+        // addEventListener('mouseover', btnMod_over);
+        // //5) 수정 마우스아웃
+        // document.querySelector(".btn.btn__modify").
+        // addEventListener('mouseout', btnMod_out);
+        // //6) 삭제 마우스오버
+        // document.querySelector(".btn.btn__del").
+        // addEventListener('mouseover', btnDel_over);
+        // //7) 삭제 마우스아웃
+        // document.querySelector(".btn.btn__del").
+        // addEventListener('mouseout', btnDel_out);
+
+
+        </script>
 </body>
 </html>
