@@ -26,6 +26,7 @@
         /* margin-left: 5px; */
       }
       button {
+        margin-top: 3px;
         margin-left: 5px;
       }
       #container .comment__list .comment__item-wrap {
@@ -55,11 +56,6 @@
           </div>
           <div class="comment__item-wrap">
             <li class="comment__item">댓글2</li>
-            <button class="btn btn__modify">수정</button>
-            <button class="btn btn__del">삭제</button>
-          </div>
-          <div class="comment__item-wrap">
-            <li class="comment__item">댓글3</li>
             <button class="btn btn__modify">수정</button>
             <button class="btn btn__del">삭제</button>
           </div> -->
@@ -96,7 +92,18 @@
           //4-1) 수정버튼
           $div.querySelector(".btn.btn__modify")
           .addEventListener("click", (e) => {
-            console.log("수정");
+            const $modify = document.querySelector("btn.btn__modify");
+            const $modifyText = prompt("수정할 내용을 입력해주세요.");
+            if($modifyText) {
+              if ($modifyText.length) {
+                e.target.parentElement.querySelector(".comment__item")
+                .textContent = $modifyText;
+              } else {
+                alert("수정할 내용이 없습니다.");
+              }
+            } else {
+              alert("댓글 수정을 취소했습니다.");
+            }
           });
           //4-2) 삭제버튼
           $div.querySelector(".btn.btn__del")
@@ -106,7 +113,7 @@
             $comments.removeChild($child);
           });
         } else {
-          alert("댓글 입력바랍니다.");
+          alert("댓글 입력 바랍니다.");
           $comment.focus();
         }
       };
