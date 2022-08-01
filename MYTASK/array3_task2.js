@@ -1,7 +1,7 @@
 const data = {
     //프로퍼티키: 프로퍼티밸류
     result: 'success',  //success: 수신 성공 fail: 수신 실패
-    //프로퍼티키 data의 밸류는 배열
+    //데이터 프로퍼티키의 밸류는 배열
     data: [
         {name: '이름1', gender:'남', age: 10, blood: 'A'},
         {name: '이름2', gender:'여', age: 20, blood: 'B'},
@@ -32,6 +32,20 @@ const data = {
     console.log(`회원 나이의 총합: ${sum}`);
 }
 
+//2. 회원 나이 총합 출력하기 (reduce 사용)
+{
+    const result = data.data.reduce(function(acc, ele) {
+        return acc+ele.age
+    }, 0);
+    console.log(`회원 나이의 총합: ${result}`);
+}
+
+//2. 회원 나이 총합 출력하기 (reduce, 화살표 함수)
+{
+    const result = data.data.reduce((acc, ele)=>acc+ele.age, 0);
+    console.log(`회원 나이의 총합: ${result}`);
+}
+
 //3. 남자회원의 나이 총합 출력하기
 {
     let sum = 0;
@@ -45,22 +59,21 @@ const data = {
     console.log(`남자회원 나이 총합: ${sum}`);
 }
 
-//3. 남자회원의 나이 총합 출력하기 //filter, reduce 사용 풀이
+//3. 남자회원의 나이 총합 출력하기 (reduce 사용) //self
 {
-    // const result = data.data.filter((ele, idx, arr)=>{
-    //     return ele.gender == '남';
-    // });
-    // console.log(result);
+    const result = data.data.reduce((acc, ele)=>{
+        if(ele.gender=='남') {
+            return acc+ele.age;
+        } else {
+            return acc+0;
+        }});
+    console.log(`남자회원 나이 총합: ${result}`);
+}
 
-    // const final = result.reduce((acc, ele, idx, arr)=>{
-    //     return acc + ele.age;
-    // }, 0);
-    // console.log(`남자회원의 나이 총합 출력하기: ${final}`);
-
-    //위를 합쳐서
-    const final = data.data.filter(ele=>ele.gender=='남')
-    .reduce((acc, ele)=>acc+ele.age, 0);
-    console.log(`남자회원의 나이 총합: ${final}`);
+//3. 남자회원의 나이 총합 출력하기 (reduce, filter 사용) //self
+{
+    const result = data.data.filter(ele=>ele.gender=='남').reduce((acc, ele)=>acc+ele.age, 0);
+    console.log(`남자회원 나이 총합: ${result}`);
 }
 
 //4. 남자회원, 여자회원을 분리하여 배열에 저장
@@ -80,7 +93,7 @@ const data = {
     console.log(women);
 }
 
-//4. 남자회원, 여자회원을 분리하여 배열에 저장 //reduce 사용 풀이
+//4. 남자회원, 여자회원을 분리하여 배열에 저장 (reduce 사용) //self
 {
     const men = data.data.reduce((acc, ele, idx, arr)=>{
         if(ele.gender=='남')
@@ -97,6 +110,14 @@ const data = {
     console.log(women);
 }
 
+//4. 남자회원, 여자회원을 분리하여 배열에 저장 (filter 사용) //self
+{
+    const men = data.data.filter(ele=>ele.gender=='남');
+    const women = data.data.filter(ele=>ele.gender=='여');
+    console.log(men);
+    console.log(women);
+}
+
 //5. A형 회원의 나이 총합 구하기
 {
     let sum = 0;
@@ -110,11 +131,10 @@ const data = {
     console.log(`A형 회원 나이 총합: ${sum}`);
 }
 
-//5. A형 회원의 나이 총합 구하기 //filter, reduce 사용 풀이
+//5. A형 회원의 나이 총합 구하기 (reduce, filter 사용)
 {
-    const sum = data.data.filter(ele=>ele.blood=='A')
-    .reduce((acc, ele)=> acc+ele.age, 0);
-    console.log(`A형 회원의 나이 총합: ${sum}`)
+    const result = data.data.filter(ele=>ele.blood=='A').reduce((acc, ele)=>acc+ele.age, 0);
+    console.log(`A형 회원 나이 총합: ${result}`);
 }
 
 //6. name이 이름3인 회원의 혈액형은?
@@ -122,14 +142,14 @@ const data = {
     if(data.result == 'success') {
         data.data.forEach(e=>{
             if(e.name == '이름3') {
-                console.log(`이름이 이름3인 회원 혈액형: ${e.blood}`);
+                console.log(`이름이 이름3인 회원 혈액형1: ${e.blood}`);
             }
         })
     }
 }
 
-//6. name이 이름3인 회원의 혈액형은? //filter 사용 풀이
+//6. name이 이름3인 회원의 혈액형은? (filter 사용)
 {
-    const result = data.data.filter(ele=>ele.name == '이름3');
-    console.log(`name이 이름3인 회원의 혈액형: ${result[0].blood}`);
+    const result = data.data.filter(ele=>ele.name=='이름3')
+    console.log(`이름이 이름3인 회원 혈액형2: ${result[0].blood}`);
 }
