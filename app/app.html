@@ -22,7 +22,7 @@
             <button class="btn btn__list">데이터 수신</button>
         </div>
         <div class="criteria">
-            <fieldset>
+            <fieldset class="criteria__gender">
                 <legend>성별</legend>
                 <label for="male">남</label><input type="radio" name="" id="male">
                 <label for="female">여</label><input type="radio" name="" id="female">
@@ -78,6 +78,23 @@
         };
         $btnList.addEventListener('click', btnList_h);
         /* 데이터 수신 종료 */
+        
+        //change case)
+        const $criteriaGender = document.querySelector('.criteria__gender');
+        const criteriaGender_h = e => {
+            console.log('성별'+e.target.id);        //이벤트 발생한 요소; e.target
+            console.log('성별'+e.currentTarget);    //이벤트 센서를 단 요소: e.currentTarget
+        }
+        $criteriaGender.addEventListener('change', criteriaGender_h);
+
+        //click case)
+        // const $criteriaGender = document.querySelector('.criteria__gender');
+        // const criteriaGender_h = e => {
+        //     if(!(e.target.tagName == 'INPUT' || e.target.tagName == 'LABEL')) return;
+        //     console.log('성별'+e);
+        // }
+        // $criteriaGender.addEventListener('click', criteriaGender_h);
+        
         
 
 
