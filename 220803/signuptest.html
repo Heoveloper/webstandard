@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/main/reset.css">
+    <link rel="stylesheet" href="/220803/reset.css">
     <link rel="stylesheet" href="/220803/signuptest.css">
     <title>SignUp</title>
 </head>
@@ -19,7 +19,7 @@
         </div>
         <header id="header" class="container">
             <div id="logo" class="content">
-                logo
+                <img id="img__logo" src="https://cdn.pixabay.com/photo/2016/03/27/18/54/technology-1283624_960_720.jpg" alt="">
             </div>
         </header>
         <nav id="nav" class="container">
@@ -36,7 +36,6 @@
         <main id="main" class="container">
             <section id="main__content" class="content">
                 <aside id="main__aside" class="content__aside">
-                    aside
                 </aside>
                 <article id="main__article" class="content__article">
                     <h2>회원가입</h2>
@@ -70,10 +69,24 @@
                                 <option value="">제주</option>
                             </select>
                         </div>
-                        <label for="">성별</label>
+                        <label id="genders" for="">성별</label>
                         <div>
                             <input type="radio" name="gender" id="man"> 남자
                             <input type="radio" name="gender" id="woman"> 여자
+                        </div>
+                        <label id="hobbies" for="">취미</label>
+                        <div>
+                            <input type="radio" name="hobby" id="read"> 독서
+                            <input type="radio" name="hobby" id="music"> 음악감상
+                            <input type="radio" name="hobby" id="exercise"> 운동
+                            <input type="radio" name="hobby" id="game"> 게임
+                        </div>
+                        <label for="">생년월일</label>
+                        <div>
+                            <input type="date">
+                        </div>
+                        <div>
+                            <button id="btn__sign-up" class="btn">회원가입</button>
                         </div>
                     </form>
                 </article>
