@@ -1,1 +1,29 @@
 * {outline: 1px solid skyblue;}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.content {
+    width: 80%;
+}
+
+#uppermost {
+    width: 100%;
+    background-color: black;
+}
+
+#top-menu {
+    display: flex;
+    justify-content: right;
+    color: white;
+}
