@@ -104,11 +104,36 @@
 }
 
 #sign-up input {
-    margin: 5px 0px;
+    margin: 3px 0px;
     width: 100%;
     height: 20px;
 }
 
+#select__location {
+    margin: 3px 0px;
+}
+
+#genders {
+    display: flex;
+    flex-direction: row;
+}
+#genders > input {
+    margin: 3px;
+    width: inherit;
+}
+
+#hobbies {
+    display: flex;
+    flex-direction: row;
+}
+#hobbies > input {
+    margin: 3px;
+    width: inherit;
+}
+
+label {
+    font-weight: bold;
+}
 #btn__sign-up {
     margin-top: 20px;
     width: 100%;
@@ -117,13 +142,8 @@
     background-color: green;
     color: white;
 }
-
-label {
-    font-weight: bold;
-}
-
 #lbl__sign-up {
-    font-size: 15px;
+    font-size: 20px;
 }
 
 #foot {
