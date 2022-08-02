@@ -14,7 +14,7 @@
 }
 
 .content {
-    width: 80%;
+    width: 60%;
 }
 
 #uppermost {
@@ -25,6 +25,84 @@
 #top-menu {
     display: flex;
     justify-content: right;
+    font-size: 13px;
     color: white;
 }
 
+.bar {
+    float: left;
+    width: 1px;
+    height: 13px;
+    margin: 3px 7px;
+    background-color: white;
+}
+
+#gnb {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-size: 15px;
+}
+
+#gnb ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#gnb ul li {
+    padding: 8px 20px;
+}
+
+#main__content {
+    display: flex;
+}
+
+#main__aside {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    background-color: skyblue;
+}
+
+#main__article {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: azure;
+}
+
+#sign-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    width: 50%;
+    background-color: white;
+}
+
+h2 {
+    font-weight: bold;
+    margin: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+#foot {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: gray;
+    color: white;
+}
