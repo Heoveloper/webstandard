@@ -102,7 +102,13 @@
 
         //3) 정렬 클릭시
         $criteriaSort.addEventListener('change', ({target})=>{
-            console.log(target.id);
+
+            //undefined, input
+            const statusOfGender = [...$btnRadioes].find(ele=>ele.checked==true);
+
+            statusOfGender
+
+
             let sortFunc = '';
             switch(target.id){
                 case "asc":
@@ -113,7 +119,16 @@
                     break;
             }
 
-            $tbody.innerHTML=data.data.sort(sortFunc).map(ele=>trTag(ele)).join();
+            if(!statusOfGender){
+                $tbody.innerHTML=data.data.sort(sortFunc)       //정렬
+                                        .map(ele=>trTag(ele))   //tr태그 생성
+                                        .join('');              //배열요소 문자열 변환
+            } else {
+                $tbody.innerHTML=data.data.filter(ele=>ele.gender == statusOfGender.id)
+                                          .sort(sortFunc)
+                                          .map(ele=>trTag(ele))
+                                          .join('');
+            }
         });
     </script>
 </body>
