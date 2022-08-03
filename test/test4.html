@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 위에 글자 올리기2</title>
+    <style>
+        /* * {outline: 1px solid skyblue;} */
+        body {margin: 0; padding: 0;}
+        ul, li {list-style: none;}
+        ul, li, p {margin: 0; padding: 0;}
+
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #container .product {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #container .product .product__item {
+            flex-basis: 150px;
+            flex-shrink: 0;
+            /* shrink: 뷰포트가 줄어들 때 아이템폭 줄임 방지 (기본값: 1) */
+            position: relative;
+            margin: 0px 5px;
+            transition: all 0.4s;
+            opacity: 0.5;
+        }
+
+        #container .product .product__item:hover {
+            flex-basis: 200px;;
+            margin: 0.2px;
+            opacity: 1;
+        }
+
+        #container .product .product__item:hover h3 {
+            background-color: black;
+        }
+
+        #container .product .product__item:hover .profile.profile--orange {
+            /* color: #f83b5af6; */
+            color: orange;
+        }
+        #container .product .product__item:hover .profile.profile--yellowgreen {
+            color: yellowgreen;
+        }
+        #container .product .product__item:hover .profile.profile--skyblue {
+            color: skyblue;
+        }
+
+        #container .product .product__item:hover .profile .profile__contents {
+            max-height: 150px;
+            background-color: rgb(178, 214, 245);
+        }
+
+        #container .product .product__item:hover .profile {
+            position: relative;
+        }
+
+        #container .product .product__item .profile::before {
+            content: '';
+            /* content: 'COFFEE MENU'; */
+            display: block;
+            position: absolute;
+            background: linear-gradient(to bottom, skyblue, blue);
+            /* top: 0; */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 60px;
+        }
+        /* #container .product .product__item .profile::after {
+            content: '──────────';
+        } */
+
+        #container .product .product__item .profile img {
+            width: 100%;
+        }
+
+        #container .product .product__item .profile .profile__contents {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            max-height: 50px;
+            overflow: hidden;
+            transition: all 0.4s;
+            opacity: 0.8; /* 투명도: 0~1 */
+        }
+
+        #container .product .product__item .profile .profile__contents h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        #container .product .product__item .profile .profile__contents h3 span {
+            display: block;
+            font-size: 0.9em;
+        }
+
+        #container .product .product__item .profile .profile__contents p {
+            font-size: 12px;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul class="product">
+            <li class="product__item">
+                <div class="profile profile--orange">
+                    <img src="https://cdn.pixabay.com/photo/2018/10/06/11/22/coffee-3727673_960_720.jpg" alt="">
+                    <div class="profile__contents">
+                        <h3>카푸치노<span>5,000원</span></h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, hic officiis laboriosam odit facilis error, soluta molestias vel illo ullam repellat tempora officia eius cum quisquam ipsam obcaecati! Porro, error!</p>
+                    </div>
+                </div>
+            </li>
+            <li class="product__item">
+                <div class="profile profile--yellowgreen">
+                    <img src="https://cdn.pixabay.com/photo/2016/11/19/12/54/coffee-1839133_960_720.jpg" alt="">
+                    <div class="profile__contents">
+                        <h3>시그니처 라떼<span>6,000원</span></h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, hic officiis laboriosam odit facilis error, soluta molestias vel illo ullam repellat tempora officia eius cum quisquam ipsam obcaecati! Porro, error!</p>
+                    </div>
+                </div>
+            </li>
+            <li class="product__item">
+                <div class="profile profile--skyblue">
+                    <img src="https://cdn.pixabay.com/photo/2019/12/02/11/23/drink-4667507_960_720.jpg" alt="">
+                    <div class="profile__contents">
+                        <h3>라떼<span>4,000원</span></h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, hic officiis laboriosam odit facilis error, soluta molestias vel illo ullam repellat tempora officia eius cum quisquam ipsam obcaecati! Porro, error!</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
