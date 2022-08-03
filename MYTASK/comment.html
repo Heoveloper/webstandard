@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/dom/create_element.js"></script>
+    <title>Comment</title>
+    <style>
+        /* * {outline: 1px solid skyblue} */
+        body {margin: 0px; padding: 0px;}
+        ul, li {list-style: none;}
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+        }
+        #profile {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 50%;
+        }
+        #comment__write {
+            width: 1000px;
+            display: flex;
+            justify-content: space-between;
+        }
+        #comment {
+            display: flex;
+            resize: none;
+            position: relative;
+            color: #FFF;
+            border-radius: 5px;
+            background-color: #000;
+            width: 800px;
+        }
+        #comment::placeholder {
+            padding: 1em;
+            text-align: center;
+            color: white;
+            opacity: 0.85;
+        }
+        #btn__write {
+            height: 100%;
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #comment__wrap {
+            display: flex;
+            align-items: center;
+            margin: 5px 0px;
+        }
+        #comment__each {
+            flex: 1;
+            width: 600px;
+            text-align: left;
+            overflow: hidden;
+        }
+        #btn__all {
+            display: flex;
+            justify-content: right;
+        }
+        #comment__wrap > button {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            margin: 0px 3px;
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #comment__profile {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 50%;
+        }
+        </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="comment__write">
+            <img id="profile" src="https://cdn.pixabay.com/photo/2015/06/01/00/20/man-792821_960_720.jpg" alt="">
+            <textarea name="" id="comment" cols="50" rows="1" placeholder="댓글 추가 (...50자)"></textarea>
+            <div id="comment__wrd">
+                <button id="btn__write">등록</button>
+            </div>
+        </div>
+        <div id="comment__list">
+            <ul id="comments">
+                <!-- <div id="comment__wrap">
+                    <img id="comment__profile" src="https://cdn.pixabay.com/photo/2015/06/01/00/20/man-792821_960_720.jpg" alt="">
+                    <li id="comment__each">아우 맛있어요</li>
+                    <button id="btn__re">답글</button>
+                    <button id="btn__mod">수정</button>
+                    <button id="btn__del">삭제</button>
+                </div> -->
+            </ul>
+          </div>
+    </div>
+
+    <script>
+        const addComment_h = (e) => {
+            const $comment = document.getElementById("comment");
+            const comment = $comment.value.trim();
+
+            if (comment.length) {
+                //댓글 생성
+                const $div = makeElements(
+                    "div", {id: "comment__wrap"},
+                    makeElements("img", {id:"comment__profile", src:"https://cdn.pixabay.com/photo/2015/06/01/00/20/man-792821_960_720.jpg"}, ''),
+                    makeElements("li", {id: "comment__each"}, comment),
+                    makeElements("button", {id: "btn__re"}, "답글"),
+                    makeElements("button", {id: "btn__mod"}, "수정"),
+                    makeElements("button", {id: "btn__del"}, "삭제")
+                );
+                //생성한 댓글을 ul 자식요소로 추가
+                const $comments = document.getElementById("comments");
+                $comments.appendChild($div);
+                //댓글창 초기화
+                $comment.value = "";
+                console.log("하이");
+
+                //댓글 수정
+                const $mod = $div.querySelector("#btn__mod");
+                $mod.addEventListener("click", e => {
+                    const $modText = prompt("수정할 내용을 입력하세요!");
+                    if($modText) {
+                        if ($modText.length) {
+                            console.log("수정클릭");
+                            e.target.parentElement.querySelector("#comment__each")
+                            .textContent = $modText;
+                        } else {
+                            alert("수정할 내용이 없습니다!")
+                        }
+                    } else {
+                        alert("댓글 수정을 취소했습니다!")
+                    }
+                });
+
+                //댓글 삭제
+                $div.querySelector("#btn__del")
+                .addEventListener("click", e => {
+                    const $child = e.target.closest("#comment__wrap");
+                    $comments.removeChild($child);
+                });
+            } else {
+                alert("댓글을 입력하세요!")
+                $comment.focus();
+            }
+        };
+
+        document.getElementById("btn__write")
+        .addEventListener("click", addComment_h);
+    </script>
+</body>
+</html>
