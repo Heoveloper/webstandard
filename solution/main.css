@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+/* * {outline: 1px solid orange;} */
+body, ul, li, fieldset, legend, h2, p {margin: 0; padding: 0;}
+ul, li {list-style: none;}
+a {text-decoration: none; color: inherit;}
+address {font-style: normal;}
+fieldset {border: none;}
+legend {display: none;}
+input[type=radio] {margin: 3px 2px;}
+input[type=checkbox] {margin: 3px 2px;}
+button {border: none;}
+
+:root {
+    /* color */
+    --white-color: #fff;
+    --black-color: #000;
+    --gray-color: #ccc;
+
+    /* spacing */
+
+    /* font-size */
+}
+
+/* 공통 */
+.content {width: 600px; margin:0 auto;}
+
+/* uppermost */
+#uppermost {display: flex; align-items: center; height: 50px;
+            background-color: var(--black-color);}
+#uppermost .content {display:flex; justify-content: flex-end;
+                     font-size: 0.8rem; font-weight: bold; color:var(--white-color);}
+#uppermost .content .interval {padding: 0.5px;}
+
+
+/* header */
+#header {height: 150px;}
+#header .content {height: 150px;
+                  background-image: url('https://cdn.pixabay.com/photo/2022/07/28/23/42/rainbow-7350780_960_720.jpg');
+                  /* background-size: 600px 150px;} */}
+
+/* gnb */
+#gnb {display: flex; align-items: center; height: 50px;}
+#gnb .content {display: flex; align-items: center; height: 100%; background-color: var(--black-color);}
+#gnb .gnb-menu {display: flex; flex:1;}
+#gnb .gnb-menu .gnb-menu__item {flex: 1; /*flex-grow:1; flex-shrink:1; flex-basis:0;*/
+                                display:flex; justify-content: center; font-size: 0.8rem; font-weight: bold; color: var(--white-color)}
+#gnb .gnb-menu .gnb-menu__item a {text-align: center;}
+#gnb .gnb-menu .gnb-menu__item .title {display: inline-block; width: 100%; text-align: center;}
+
+/* main */
+#main .content {display: flex;}
+#main .content .aside {flex: 1; background-color: lightskyblue;}
+#main .content .section {display: flex; justify-content: center; flex: 4; background-color: lightcyan;}
+#main .content .section .signup-wrap {width: 250px; margin: 30px 0px;}
+#main .content .section .signup-wrap .title {text-align: center; letter-spacing: 0.5em;}
+#main .content .section .signup-wrap .signup {background-color: white;}
+#main .content .section .signup-wrap .signup li {margin: 0.3px;}
+
+
+/* footer */
+#footer {display: flex; align-items: center; height: 70px; background-color: gray;}
+#footer .content {text-align: center; font-style: inherit; color: white;}
+
+/* button */
+.btn.btn__join {width: 100%; margin-top: 20px; padding: 5px; background-color: green; color: white;}
