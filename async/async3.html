@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async 3</title>
+</head>
+<body>
+    <p><input type="text" id="num1">+<input type="text" id="num2">=<input type="text" id="result" readonly></p>
+    <button id="addBtn1">등록1</button>
+    <button id="addBtn2">등록2</button>
+    <button id="addBtn3">등록3</button>
+
+
+    <script>
+        //case1)
+        addBtn1.addEventListener('click', function(e) {
+            console.log('Called addBtn1');
+            result.value = parseInt(num1.value) + parseInt(num2.value);
+        });
+
+        //case2)
+        let sum;
+        addBtn2.addEventListener('click', function(e) {
+            console.log('Called addBtn2');
+            sum = parseInt(num1.value) + parseInt(num2.value);
+        });
+        result.value = sum;
+        console.log(sum);
+
+        //case3)
+        const result3 =
+        addBtn3.addEventListener('click', function(e) {
+            console.log('Called addBtn3');
+            return parseInt(num1.value) + parseInt(num2.value);
+        });
+        console.log(result3);
+    </script>
+</body>
+</html>
